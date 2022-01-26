@@ -25,7 +25,7 @@ $app = new Laravel\Lumen\Application(
 
 $app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 $app->configure('swagger-lume');
 
@@ -92,6 +92,8 @@ $app->configure('app');
 | totally optional, so you are not required to uncomment this line.
 |
 */
+
+// $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 
 $app->register(\SwaggerLume\ServiceProvider::class);
 
