@@ -17,10 +17,6 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/login', function () use ($router) {
-    return view('login');
-});
-
 $router->group(['prefix' => 'api'], function () use ($router){
     $router->get(uri:'/users', action:'UsersController@index');
     $router->post(uri:'/users', action:'UsersController@store');
@@ -28,3 +24,5 @@ $router->group(['prefix' => 'api'], function () use ($router){
     $router->delete(uri:'/users/{id}', action:'UsersController@destroy');
 });
 
+$router->get(uri:'/test', action:'TestController@index');
+$router->post(uri:'/login', action:'TestController@login');
