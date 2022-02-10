@@ -43,5 +43,20 @@ services:
       - ./src:/var/www/html
     ports:
       - "9000:9000"
+    environment:
+      CACHE_DRIVER: "redis"
+      QUEUE_CONNECTION: "redis"
+      REDIS_HOST: cache
+      REDIS_PASSWORD: null
+      REDIS_PORT: "6379"
+    networks:
+      - lavarel
+  cache:
+    image: redis:3.2-alpine
+    command: redis-server
+    volumes:
+      - "./src:/data"
+    ports:
+      - "6379:6379"
     networks:
       - lavarel
