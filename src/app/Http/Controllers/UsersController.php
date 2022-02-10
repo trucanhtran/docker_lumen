@@ -18,7 +18,7 @@ class UsersController extends Controller
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->password = $request->password;
+            $user->password = base64_encode(env('APP_KEY').$request->password);
             if ($user->save()){
                 return response()->json(['status' => 'success', 'message' => 'Post created successfully']);
             }
