@@ -26,11 +26,9 @@ class TestController extends Controller
             $token = uniqid('token_', true);
             $user->token = $token;
             $user->save();
-            // print(json_encode($user));
-            return view('home', ['token'=>$token, 'user'=>$user]);
-        } else {
-            print('no user');
-        }
+            return response()->json(['token' => $token, 'status' => 'success', 'message' => 'Post created successfully']);
+            
+        } 
     }
 
     public function signup(Request $request)
